@@ -19,7 +19,6 @@ let package = Package(
             path: "Sources/Amplitude",
             exclude: {
               var exclude: [String] = ["AppledocSettings.plist"]
-              // if !canImport(UIKit) {
               if #available(macOS 10.10, tvOS 9.0, *) {
                 exclude.append("Sources/Amplitude/AMPBubbleView.h")
                 exclude.append("Sources/Amplitude/AMPBubbleView.m")
@@ -30,20 +29,25 @@ let package = Package(
               }
               return exclude
             }(),
-            resources: [
-                .process("Resources/AMPBubbleView.xib"),
-                .process("Resources/AMPInfoViewController.xib"),
-                .process("Resources/cancel.png"),
-                .process("Resources/cancel@2x.png"),
-                .process("Resources/cancel@3x.png"),
-                .process("Resources/ComodoRsaDomainValidationCA.der"),
-                .process("Resources/logo-banner.png"),
-                .process("Resources/logo-banner@2x.png"),
-                .process("Resources/logo-banner@3x.png"),
-                .process("Resources/logo-button.png"),
-                .process("Resources/logo-button@2x.png"),
-                .process("Resources/logo-button@3x.png")
-            ],
+            resources: {
+              if #available(macOS 10.10, tvOS 9.0, *) {
+                return nil
+              }
+                return [
+                  .process("Resources/AMPBubbleView.xib"),
+                  .process("Resources/AMPInfoViewController.xib"),
+                  .process("Resources/cancel.png"),
+                  .process("Resources/cancel@2x.png"),
+                  .process("Resources/cancel@3x.png"),
+                  .process("Resources/ComodoRsaDomainValidationCA.der"),
+                  .process("Resources/logo-banner.png"),
+                  .process("Resources/logo-banner@2x.png"),
+                  .process("Resources/logo-banner@3x.png"),
+                  .process("Resources/logo-button.png"),
+                  .process("Resources/logo-button@2x.png"),
+                  .process("Resources/logo-button@3x.png")
+                ]
+            }(),
             publicHeadersPath: ".")
     ]
 )
