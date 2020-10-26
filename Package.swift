@@ -19,24 +19,24 @@ let package = Package(
             path: "Sources/Amplitude",
             exclude: {
               var exclude: [String] = ["AppledocSettings.plist"]
-              // if #available(macOS 10.10, tvOS 9.0, *) {
-              #if !canImport(UIKit)
+              if #available(macOS 10.10, tvOS 9.0, *) {
+              // #if !canImport(UIKit)
                 exclude.append("Sources/Amplitude/AMPBubbleView.h")
                 exclude.append("Sources/Amplitude/AMPBubbleView.m")
                 exclude.append("Sources/Amplitude/AMPEventExplorer.h")
                 exclude.append("Sources/Amplitude/AMPEventExplorer.m")
                 exclude.append("Sources/Amplitude/AMPInfoViewController.h")
                 exclude.append("Sources/Amplitude/AMPInfoViewController.m")
-              #endif
-              // }
+              // #endif
+              }
               return exclude
             }(),
             resources: {
-              // if #available(macOS 10.10, tvOS 9.0, *) {
-              #if !canImport(UIKit)
+              if #available(macOS 10.10, tvOS 9.0, *) {
+              // #if !canImport(UIKit)
                 return nil
-              #endif
-              // }
+              // #endif
+              }
                 return [
                   .process("Resources/AMPBubbleView.xib"),
                   .process("Resources/AMPInfoViewController.xib"),
@@ -50,6 +50,8 @@ let package = Package(
                   .process("Resources/logo-button.png"),
                   .process("Resources/logo-button@2x.png"),
                   .process("Resources/logo-button@3x.png")
+                  // file:///Users/johntran/Projects/Amplitude-iOS/.git/
+                  // macOS-tvOS-disable-event-explorer
                 ]
             }(),
             publicHeadersPath: ".")

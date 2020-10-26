@@ -23,7 +23,7 @@
 //  THE SOFTWARE.
 //
 
-#if TARGET_OS_OSX
+#if TARGET_OS_IOS
 #import "AMPEventExplorer.h"
 #import <UIKit/UIKit.h>
 #import "AMPBubbleView.h"

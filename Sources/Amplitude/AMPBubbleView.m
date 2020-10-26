@@ -23,6 +23,7 @@
 //  THE SOFTWARE.
 //
 
+#if TARGET_OS_IOS
 #import "AMPBubbleView.h"
 
 @implementation AMPBubbleView
@@ -58,3 +59,4 @@
 }
 
 @end
+#endif
