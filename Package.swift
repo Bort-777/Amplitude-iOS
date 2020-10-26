@@ -21,12 +21,12 @@ let package = Package(
               var exclude: [String] = ["AppledocSettings.plist"]
               if #available(macOS 10.10, tvOS 9.0, *) {
               // #if !canImport(UIKit)
-                exclude.append("Sources/Amplitude/AMPBubbleView.h")
-                exclude.append("Sources/Amplitude/AMPBubbleView.m")
-                exclude.append("Sources/Amplitude/AMPEventExplorer.h")
-                exclude.append("Sources/Amplitude/AMPEventExplorer.m")
-                exclude.append("Sources/Amplitude/AMPInfoViewController.h")
-                exclude.append("Sources/Amplitude/AMPInfoViewController.m")
+                exclude.append("AMPBubbleView.h")
+                exclude.append("AMPBubbleView.m")
+                exclude.append("AMPEventExplorer.h")
+                exclude.append("AMPEventExplorer.m")
+                exclude.append("AMPInfoViewController.h")
+                exclude.append("AMPInfoViewController.m")
               // #endif
               }
               return exclude
